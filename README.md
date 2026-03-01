@@ -43,4 +43,4 @@ Using this tool will **not get you banned**, as it does not interact with the ga
 | **TSS & FS**                      | Select Title → TSS/FS → Awk/Onion     |
 | **NP**                            | Select Title → NP → Any Skill key     |
 | **Flow (Atma Flow)**              | Any Consumable key                    |
-| **Lithia Gemstones**              | Awakening key                         |
+| **Lithia Gemstones**              | Awakening key/Onion                   |

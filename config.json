@@ -1,0 +1,37 @@
+{
+  "Skills": [
+    "KeyQ",
+    "KeyW",
+    "KeyE",
+    "KeyR",
+    "KeyT",
+    "KeyA",
+    "KeyS",
+    "KeyD",
+    "KeyC",
+    "KeyF"
+  ],
+  "Consumables": [
+    "Num1",
+    "Num2",
+    "Num3",
+    "Num4",
+    "Num5",
+    "Num6"
+  ],
+  "Reset_Key": "End",
+  "Awakening": "ControlLeft",
+  "Onion_Slot": "",
+  "SelectTitle": "ShiftLeft",
+  "FS_Key": "LeftArrow",
+  "NP_Key": "DownArrow",
+  "TSS_Key": "UpArrow",
+  "NonRelevantTitle_Key": "RightArrow",
+  "Flow": true,
+  "Lithia_Awk": true,
+  "Horizontal": false,
+  "ImageSize": [
+    64.0,
+    64.0
+  ]
+}

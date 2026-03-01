@@ -1,2 +1,46 @@
-# elsword_title_timer
-a utility that helps people track their titles properly on elsword. it is mostly helpful in raids since, you, as a player, want to optimize your DPS with their usage.
+# Elsword Title Timer
+
+**Elsword Title Timer** is a utility that helps you track your titles efficiently in **Elsword**. It’s especially useful in raids, where optimizing your DPS by timing your title effects correctly can make a big difference.
+
+## Safety / Disclaimer
+
+Elsword Title Timer is completely safe. It does **not** modify the game or read its memory. It only listens to your key presses. You could even run it while using Notepad.  
+
+Using this tool will **not get you banned**, as it does not interact with the game client in any way.  
+
+**Important:** Even though this utility is safe and not a cheat, it’s best **not to discuss external tools inside the game**, as other players or automated systems may misunderstand.
+
+## Setup
+
+1. Build the app for your platform (Windows/Linux).  
+2. Copy your `config.json` file into the same folder where the app was compiled.  
+3. You can edit `config.json` manually with a text editor or modify settings directly in the app under the **Settings** tab.
+
+> **Tip:** For best results, make sure your key settings in `config.json` match your in-game key configuration.
+
+## Title Processing Instructions
+
+### TSS & FS Titles
+1. Press your **Select Title** key.  
+2. Press your **TSS / FS** key.  
+3. Press your **Awakening / Onion** key.
+
+### NP Title
+1. Press your **Select Title** key.  
+2. Press your **NP** key.  
+3. Press any of your **Skill** keys.
+
+### Flow (Atma’Ram Flow Accessories)
+- Press any of your **Consumable** keys.
+
+### Lithia Gemstones
+- Press your **Awakening** key.
+
+## Quick Reference
+
+| Title / Effect                    | Key Sequence                          |
+|-----------------------------------|---------------------------------------|
+| **TSS & FS**                      | Select Title → TSS/FS → Awk/Onion     |
+| **NP**                            | Select Title → NP → Any Skill key     |
+| **Flow (Atma Flow)**              | Any Consumable key                    |
+| **Lithia Gemstones**              | Awakening key                         |

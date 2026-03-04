@@ -10,6 +10,8 @@ pub struct TrackerUI {
     pub np_off: egui::TextureHandle,
     pub flow_on: egui::TextureHandle,
     pub flow_off: egui::TextureHandle,
+    pub grove_on: egui::TextureHandle,
+    pub grove_off: egui::TextureHandle,
     pub lithia_on: egui::TextureHandle,
     pub lithia_off: egui::TextureHandle,
     pub icon_size: egui::Vec2,
@@ -46,6 +48,8 @@ impl TrackerUI {
             np_off: load_png(ctx, "np_off", include_bytes!("../assets/icons/NP_off.png")),
             flow_on: load_png(ctx, "flow_on", include_bytes!("../assets/icons/Flow.png")),
             flow_off: load_png(ctx, "flow_off", include_bytes!("../assets/icons/Flow_off.png")),
+            grove_on: load_png(ctx, "grove_on", include_bytes!("../assets/icons/Grove.png")),
+            grove_off: load_png(ctx, "grove_off", include_bytes!("../assets/icons/Grove_off.png")),
             lithia_on: load_png(ctx, "lithia_on", include_bytes!("../assets/icons/Lithia.png")),
             lithia_off: load_png(ctx, "lithia_off", include_bytes!("../assets/icons/Lithia_off.png")),
             icon_size,
@@ -59,24 +63,46 @@ impl TrackerUI {
 
         ui.label(format!("Selected: {}", tracker.selected));
 
+        let mut cds = vec![
+                (tracker.config.fs, &tracker.fs, &self.fs_on, &self.fs_off, "FS"),
+                (tracker.config.tss, &tracker.tss, &self.tss_on, &self.tss_off, "TSS"),
+                (tracker.config.np, &tracker.np, &self.np_on, &self.np_off, "NP"),
+                (tracker.config.flow, &tracker.flow, &self.flow_on, &self.flow_off, "Flow"),
+                (tracker.config.grove, &tracker.grove, &self.grove_on, &self.grove_off, "Grove"),
+                (tracker.config.lithia_awk, &tracker.lithia_awk, &self.lithia_on, &self.lithia_off, "Lithia")
+        ];
+
         if tracker.config.horizontal {
             ui.horizontal(|ui| {
-                let mut cds = vec![
-                    (&tracker.fs, &self.fs_on, &self.fs_off, "FS"),
-                    (&tracker.tss, &self.tss_on, &self.tss_off, "TSS"),
-                    (&tracker.np, &self.np_on, &self.np_off, "NP"),
-                ];
+                for (toggled, cd, icon_on, icon_off, name) in cds {
+                    if toggled == true {
+                        ui.vertical(|ui| {
+                            let icon =
+                                if cd.start_time.is_none() { icon_on } else { icon_off };
 
-                if tracker.config.flow {
-                    cds.push((&tracker.flow, &self.flow_on, &self.flow_off, "Flow"));
+                            ui.add(
+                                egui::Image::new(icon)
+                                    .fit_to_exact_size(icon_size),
+                            );
+
+                            if let Some(t) = cd.start_time {
+                                ui.label(format!(
+                                    "{}: {:.1}",
+                                    name,
+                                    (t + cd.duration - now).max(0.0)
+                                ));
+                            } else {
+                                ui.label(format!("{}: Ready", name));
+                            }
+                        });
+                    }
                 }
-
-                if tracker.config.lithia_awk {
-                    cds.push((&tracker.lithia_awk, &self.lithia_on, &self.lithia_off, "Lithia"));
-                }
-
-                for (cd, icon_on, icon_off, name) in cds {
-                    ui.vertical(|ui| {
+            });
+        }
+        else {
+            for (toggled, cd, icon_on, icon_off, name) in cds {
+                if toggled == true {
+                    ui.horizontal(|ui| {
                         let icon =
                             if cd.start_time.is_none() { icon_on } else { icon_off };
 
@@ -96,42 +122,6 @@ impl TrackerUI {
                         }
                     });
                 }
-            });
-        } else {
-            let mut cds = vec![
-                (&tracker.fs, &self.fs_on, &self.fs_off, "FS"),
-                (&tracker.tss, &self.tss_on, &self.tss_off, "TSS"),
-                (&tracker.np, &self.np_on, &self.np_off, "NP"),
-            ];
-
-            if tracker.config.flow {
-                cds.push((&tracker.flow, &self.flow_on, &self.flow_off, "Flow"));
-            }
-
-            if tracker.config.lithia_awk {
-                cds.push((&tracker.lithia_awk, &self.lithia_on, &self.lithia_off, "Lithia"));
-            }
-
-            for (cd, icon_on, icon_off, name) in cds {
-                ui.horizontal(|ui| {
-                    let icon =
-                        if cd.start_time.is_none() { icon_on } else { icon_off };
-
-                    ui.add(
-                        egui::Image::new(icon)
-                            .fit_to_exact_size(icon_size),
-                    );
-
-                    if let Some(t) = cd.start_time {
-                        ui.label(format!(
-                            "{}: {:.1}",
-                            name,
-                            (t + cd.duration - now).max(0.0)
-                        ));
-                    } else {
-                        ui.label(format!("{}: Ready", name));
-                    }
-                });
             }
         }
     }

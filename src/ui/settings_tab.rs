@@ -6,12 +6,23 @@ use crate::helpers::*;
 
 use eframe::egui;
 
+use std::collections::HashSet;
+
 pub fn show(ui: &mut egui::Ui, tracker: &mut Tracker) {
+
     ui.heading("Settings");
+
+    ui.label("In case of specific keys not working, consider checking Debug->Duplicate Key Check section!");
+    
+    ui.separator();
 
     ui.collapsing("Layout", |ui| {
         ui.checkbox(&mut tracker.config.horizontal, "Horizontal Layout");
+        ui.checkbox(&mut tracker.config.fs, "Enable FS Cooldown");
+        ui.checkbox(&mut tracker.config.tss, "Enable TSS Cooldown");
+        ui.checkbox(&mut tracker.config.np, "Enable NP Cooldown");
         ui.checkbox(&mut tracker.config.flow, "Enable Flow Cooldown");
+        ui.checkbox(&mut tracker.config.grove, "Enable Grove Cooldown");
         ui.checkbox(&mut tracker.config.lithia_awk, "Enable Lithia Cooldown");
     });
 

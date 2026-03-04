@@ -25,6 +25,15 @@ pub struct Config {
     #[serde(rename = "SelectTitle")]
     pub select: String,
 
+    #[serde(rename = "FS")]
+    pub fs: bool,
+
+    #[serde(rename = "NP")]
+    pub np: bool,
+
+    #[serde(rename = "TSS")]
+    pub tss: bool,
+
     #[serde(rename = "FS_Key")]
     pub fskey: String,
 
@@ -39,6 +48,9 @@ pub struct Config {
 
     #[serde(rename = "Flow")]
     pub flow: bool,
+
+    #[serde(rename = "Grove")]
+    pub grove: bool,
 
     #[serde(rename = "Lithia_Awk")]
     pub lithia_awk: bool,

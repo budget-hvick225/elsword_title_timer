@@ -13,6 +13,7 @@ pub struct Tracker {
     pub np: Cooldown,
     pub tss: Cooldown,
     pub flow: Cooldown,
+    pub grove: Cooldown,
     pub lithia_awk: Cooldown,
     pub selected: String,
 
@@ -36,6 +37,7 @@ impl Tracker {
             np: Cooldown::new(25.0),
             tss: Cooldown::new(30.0),
             flow: Cooldown::new(15.0),
+            grove: Cooldown::new(10.0),
             lithia_awk: Cooldown::new(15.0),
             selected: String::new(),
             pressed_keys: std::sync::Arc::new(std::sync::Mutex::new(std::collections::HashSet::new())),

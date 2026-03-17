@@ -1,3 +1,11 @@
+- Added Grove Timer
+- Updated Debug Section to account for new additions
+- Every Timer type is now togglable
+
+Make this update description slightly more professional 
+
+This is the project desscription overall
+
 # Elsword Title Timer
 
 **Elsword Title Timer** is a utility that helps you track your titles efficiently in **Elsword**. It’s especially useful in raids, where optimizing your DPS by timing your title effects correctly can make a big difference.
